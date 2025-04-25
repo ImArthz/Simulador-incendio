@@ -3,11 +3,13 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class Config {
 private:
     short int interaction_limit;
     bool vento_ativo;
-    std::vector<std::string> direcoes_vento;
+    vector<string> direcoes_vento;
     
 public:
     Config();
@@ -19,8 +21,8 @@ public:
     void setVento(bool ativo);
     bool getVento() const;
     
-    void setDirecoesVento(const std::vector<std::string>& direcoes);
-    std::vector<std::string> getDirecoesVento() const;
+    void setDirecoesVento(const vector<string>& direcoes);
+    vector<string> getDirecoesVento() const;
 };
 
 #endif

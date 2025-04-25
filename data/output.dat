@@ -1,0 +1,9 @@
+
+=== RESULTADOS DA SIMULAÇÃO ===
+Caminho do animal:
+(2,0) -> (3,0) -> (4,0) -> (4,1) -> (4,0) -> (3,0)
+
+Total de passos: 6
+Encontros com água: 1
+Sobreviveu? Sim
+===========================

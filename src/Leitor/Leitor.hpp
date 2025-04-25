@@ -5,24 +5,26 @@
 #include <vector>
 #include <fstream>
 
+using namespace std;
+
 class Leitor {
 private:
-    std::string input_path;
-    std::string output_path;
+    string input_path;
+    string output_path;
     
 public:
-    Leitor();
-    ~Leitor();
+    Leitor() ;
+    ~Leitor() ;
     
-    void setInputPath(const std::string& path);
-    void setOutputPath(const std::string& path);
+    void setInputPath(const string& path);
+    void setOutputPath(const string& path);
     
-    std::vector<std::vector<int>> lerMatriz() const;
-    void salvarMatriz(const std::vector<std::vector<int>>& matriz) const;
+    vector<vector<int>> lerMatriz() const;
+    void salvarMatriz(const vector<vector<int>>& matriz) const;
     
-    std::pair<int, int> getDimensoes() const;
-    std::pair<int, int> getIncendioInicial() const;
-    std::pair<int, int> getPosicaoAnimalInicial() const;
+    pair<int, int> getDimensoes() const;
+    pair<int, int> getIncendioInicial() const;
+    pair<int, int> getPosicaoAnimalInicial() const;
 };
 
 #endif

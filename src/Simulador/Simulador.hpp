@@ -5,6 +5,8 @@
 #include "Animal/Animal.hpp"
 #include "Config/Config.hpp"
 
+using namespace std;
+
 class Simulador {
 private:
     Floresta floresta;
@@ -17,7 +19,7 @@ public:
     ~Simulador();
     
     void executarSimulacao();
-    void salvarResultados(const std::string& arquivo_saida) const;
+    void salvarResultados(const string& arquivo_saida) const;
 };
 
-#endif  
+#endif

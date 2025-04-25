@@ -1,12 +1,14 @@
 #include "Floresta.hpp"
 
+using namespace std;
+
 Floresta::Floresta(int n, int m) : linhas(n), colunas(m), iteracao_atual(0) {
-    matriz.resize(n, std::vector<int>(m, 1));
+    matriz.resize(n, vector<int>(m, 1));
 }
 
-void Floresta::propagarIncendio(bool com_vento, const std::vector<std::string>& direcoes) {
-    std::vector<std::pair<int, int>> novas_chamas;
-    std::vector<std::pair<int, int>> direcoes_propagacao;
+void Floresta::propagarIncendio(bool com_vento, const vector<string>& direcoes) {
+    vector<pair<int, int>> novas_chamas;
+    vector<pair<int, int>> direcoes_propagacao;
 
     if (com_vento) {
         for (const auto& dir : direcoes) {
@@ -35,20 +37,22 @@ void Floresta::propagarIncendio(bool com_vento, const std::vector<std::string>& 
     }
 
     for (const auto& pos : novas_chamas) {
+        int valor_antigo = matriz[pos.first][pos.second];
         matriz[pos.first][pos.second] = 2;
+        mudancas.push_back({{pos.first, pos.second}, {valor_antigo, 2}});
     }
 }
 
 int Floresta::getFocosAtivos() const {
-    int count = 0;
+    int total = 0;
     for (const auto& linha : matriz) {
-        count += std::count(linha.begin(), linha.end(), 2);
+        total += count(linha.begin(), linha.end(), 2);
     }
-    return count;
+    return total;
 }
 
-void Floresta::salvarMatriz(const std::string& arquivo_saida) const {
-    std::ofstream arquivo(arquivo_saida, std::ios::app);
+void Floresta::salvarMatriz(const string& arquivo_saida) const {
+    ofstream arquivo(arquivo_saida, ios::app);
     for (const auto& linha : matriz) {
         for (int val : linha) {
             arquivo << val << " ";
@@ -56,4 +60,36 @@ void Floresta::salvarMatriz(const std::string& arquivo_saida) const {
         arquivo << "\n";
     }
     arquivo << "\n";
+}
+void Floresta::carregarMatriz(const vector<vector<int>>& nova_matriz) {
+    matriz = nova_matriz;
+    linhas = matriz.size();
+    if(linhas > 0) colunas = matriz[0].size();
+}
+
+void Floresta::setIncendioInicial(int x, int y) {
+    incendio_inicial = {x, y};
+    matriz[x][y] = 2;
+}
+
+vector<vector<int>> Floresta::getMatriz() const {
+    return matriz;
+}
+
+void Floresta::atualizarMatriz(int x, int y, int valor) {
+    if (x >= 0 && x < linhas && y >= 0 && y < colunas) {
+        int valor_antigo = matriz[x][y];
+        if(valor != valor_antigo) {
+            mudancas.push_back({{x,y}, {valor_antigo, valor}});
+            matriz[x][y] = valor;
+        }
+    }
+}
+
+void Floresta::limparMudancas() {
+    mudancas.clear();
+}
+
+const vector<pair<pair<int, int>, pair<int, int>>>& Floresta::getMudancas() const {
+    return mudancas;
 }

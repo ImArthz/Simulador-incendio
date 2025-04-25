@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -std=c++11 -Isrc
+CFLAGS = -Wall -std=c++14 -Isrc  
 SRCDIR = src
 BINDIR = bin
 SOURCES = $(wildcard $(SRCDIR)/*/*.cpp)
@@ -8,12 +8,17 @@ EXECUTABLE = simulador
 
 all: $(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS) bin/main.o
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(BINDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bin/main.o: src/main.cpp
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
 	rm -rf $(BINDIR) $(EXECUTABLE)

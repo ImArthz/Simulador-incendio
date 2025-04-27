@@ -12,7 +12,7 @@ Simulador desenvolvido para a disciplina de AEDS (Algoritmos e Estruturas de Dad
 | `0`   | Área segura                     | ![Área segura](docs/imgs/safe_area-removebg-preview.png)  |
 | `1`   | Árvore saudável                 | ![Árvore](docs/imgs/safe_tree-removebg-preview.png)       |
 | `2`   | Árvore em chamas                | ![Fogo](docs/imgs/burning_tree-removebg-preview.png)         |
-| `3`   | Árvore queimada                 | ![Queimada](docs/imgs/burned_tree-removebg-preview.pnf)   |
+| `3`   | Árvore queimada                 | ![Queimada](docs/imgs/burned_tree-removebg-preview.png)   |
 | `4`   | Reservatório de água            | ![Água](docs/imgs/water-removebg-preview.png)        |
 
 ---
